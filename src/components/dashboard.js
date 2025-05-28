@@ -21,9 +21,13 @@ const NavBar = ({ role }) => {
         <div className="flex justify-between h-16">
           <div className="flex">
             {navItems[role]?.map((item) => (
-              <a key={item} className="inline-flex items-center px-3 py-2 text-white hover:text-indigo-200 cursor-pointer">
+              <button
+                key={item}
+                onClick={() => navigate(`/${item.toLowerCase().replace(/\s+/g, '-')}`)}
+                className="inline-flex items-center px-3 py-2 text-white hover:text-indigo-200 cursor-pointer"
+              >
                 {item}
-              </a>
+              </button>
             ))}
           </div>
           <div className="flex items-center">
