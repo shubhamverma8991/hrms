@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({ role }) => {
@@ -86,7 +85,7 @@ const DashboardContent = ({ role }) => {
     </div>
   );
 };
-
+// eslint-disable-next-line no-unused-vars
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
