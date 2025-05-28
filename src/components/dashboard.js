@@ -1,45 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar';
 
-const NavBar = ({ role }) => {
-  const navigate = useNavigate();
-  const navItems = {
-    admin: ["Dashboard", "Employees", "Attendance", "Leave", "Reports", "Admin Tools"],
-    hr: ["Dashboard", "Employees", "Attendance", "Leave", "Reports"],
-    employee: ["Dashboard", "My Profile", "Tasks", "Leave Balance"],
-  };
+// const NavBar = ({ role }) => {
+//   const navigate = useNavigate();
+//   const navItems = {
+//     admin: ["Dashboard", "Employees", "Attendance", "Leave", "Reports", "Admin Tools"],
+//     hr: ["Dashboard", "Employees", "Attendance", "Leave", "Reports"],
+//     employee: ["Dashboard", "My Profile", "Tasks", "Leave Balance"],
+//   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('role');
-    localStorage.removeItem('email');
-    navigate('/login');
-  };
+//   const handleLogout = () => {
+//     localStorage.removeItem('role');
+//     localStorage.removeItem('email');
+//     navigate('/login');
+//   };
 
-  return (
-    <nav className="bg-indigo-600 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            {navItems[role]?.map((item) => (
-              <button
-                key={item}
-                onClick={() => navigate(`/${item.toLowerCase().replace(/\s+/g, '-')}`)}
-                className="inline-flex items-center px-3 py-2 text-white hover:text-indigo-200 cursor-pointer"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center">
-            <button onClick={handleLogout} className="text-white hover:text-indigo-200">
-              Logout
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
+//   return (
+//     <nav className="bg-indigo-600 shadow-lg">
+//       <div className="max-w-7xl mx-auto px-4">
+//         <div className="flex justify-between h-16">
+//           <div className="flex">
+//             {navItems[role]?.map((item) => (
+//               <button
+//                 key={item}
+//                 onClick={() => navigate(`/${item.toLowerCase().replace(/\s+/g, '-')}`)}
+//                 className="inline-flex items-center px-3 py-2 text-white hover:text-indigo-200 cursor-pointer"
+//               >
+//                 {item}
+//               </button>
+//             ))}
+//           </div>
+//           <div className="flex items-center">
+//             <button onClick={handleLogout} className="text-white hover:text-indigo-200">
+//               Logout
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
 
 const DashboardContent = ({ role, data }) => {
   const email = localStorage.getItem('email');
@@ -48,7 +49,7 @@ const DashboardContent = ({ role, data }) => {
   if (role === 'admin' || role === 'hr' || role === 'employee') {
     return (
       <div className="max-w-7xl mx-auto p-6">
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 mt-16">
           <h1 className="text-2xl font-bold mb-4">
             {role === 'admin' ? 'Admin' : role === 'hr' ? 'HR Manager' : 'Employee'} Dashboard
           </h1>
@@ -224,6 +225,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* <NavBar role={role} /> */}
       <NavBar role={role} />
       <DashboardContent role={role} data={data} />
     </div>
