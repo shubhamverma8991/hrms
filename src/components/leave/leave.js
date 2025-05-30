@@ -1,63 +1,341 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar";
+import {
+  Clock,
+  CheckCircle,
+  XCircle,
+  UserMinus,
+  CalendarCheck,
+  Thermometer,
+  Hash,
+  User,
+  Tag,
+  Calendar,
+  CircleDot,
+  MessageSquare,
+} from "lucide-react";
 
 const LeaveContent = ({ role }) => {
-  const cardsData = {
+  const [leaveData, setLeaveData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/leavedata.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setLeaveData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching leave data:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  const cardTitles = {
     admin: [
-      { title: "Pending Requests", desc: "View all pending leave requests." },
-      { title: "Approved This Month", desc: "Overview of approved leaves." },
+      {
+        title: "Pending Requests",
+        baseDesc: "View all pending leave requests.",
+        icon: Clock,
+      },
+      {
+        title: "Approved This Month",
+        baseDesc: "Overview of approved leaves.",
+        icon: CheckCircle,
+      },
       {
         title: "Rejected This Month",
-        desc: "Details of rejected leave requests.",
+        baseDesc: "Details of rejected leave requests.",
+        icon: XCircle,
       },
-      { title: "On Leave Today", desc: "Employees currently on leave." },
+      {
+        title: "On Leave Today",
+        baseDesc: "Employees currently on leave.",
+        icon: UserMinus,
+      },
     ],
     hr: [
-      { title: "Pending Requests", desc: "View all pending leave requests." },
-      { title: "Approved This Month", desc: "Overview of approved leaves." },
+      {
+        title: "Pending Requests",
+        baseDesc: "View all pending leave requests.",
+        icon: Clock,
+      },
+      {
+        title: "Approved This Month",
+        baseDesc: "Overview of approved leaves.",
+        icon: CheckCircle,
+      },
       {
         title: "Rejected This Month",
-        desc: "Details of rejected leave requests.",
+        baseDesc: "Details of rejected leave requests.",
+        icon: XCircle,
       },
-      { title: "On Leave Today", desc: "Employees currently on leave." },
+      {
+        title: "On Leave Today",
+        baseDesc: "Employees currently on leave.",
+        icon: UserMinus,
+      },
     ],
     employee: [
-      { title: "Available Leave", desc: "Check your current leave balance." },
-      { title: "Pending Requests", desc: "Your pending leave requests." },
-      { title: "Approved This Year", desc: "Leaves approved this year." },
-      { title: "Sick Leave", desc: "Sick leave balance and usage." },
+      {
+        title: "Available Leave",
+        baseDesc: "Check your current leave balance.",
+        icon: CalendarCheck,
+      },
+      {
+        title: "Pending Requests",
+        baseDesc: "Your pending leave requests.",
+        icon: Clock,
+      },
+      {
+        title: "Approved This Year",
+        baseDesc: "Leaves approved this year.",
+        icon: CheckCircle,
+      },
+      {
+        title: "Sick Leave",
+        baseDesc: "Sick leave balance and usage.",
+        icon: Thermometer,
+      },
     ],
   };
 
+  const getDynamicDesc = (title) => {
+    if (!leaveData[role]) return "";
+    switch (title) {
+      case "Pending Requests":
+        return `${
+          leaveData[role].pendingRequests || 0
+        } requests awaiting approval.`;
+      case "Approved This Month":
+        return `${
+          leaveData[role].approvedThisMonth || 0
+        } leaves approved this month.`;
+      case "Rejected This Month":
+        return `${
+          leaveData[role].rejectedThisMonth || 0
+        } leaves rejected this month.`;
+      case "On Leave Today":
+        return `${leaveData[role].onLeaveToday || 0} employees on leave today.`;
+      case "Available Leave":
+        const { annual, sick, casual } = leaveData[role].availableLeave || {};
+        return `Annual: ${annual || 0}, Sick: ${sick || 0}, Casual: ${
+          casual || 0
+        }`;
+      case "Approved This Year":
+        return `${
+          leaveData[role].approvedThisYear || 0
+        } leaves approved this year.`;
+      case "Sick Leave":
+        return `${
+          leaveData[role].sickLeaveUsed || 0
+        } sick leaves used this year.`;
+      default:
+        return "";
+    }
+  };
+
   const renderFlexCards = () => {
-    const cards = cardsData[role] || [];
-    return cards.map(({ title, desc }, i) => (
-      <Card key={i} title={title} desc={desc} />
+    const cards = cardTitles[role] || [];
+    return cards.map(({ title, baseDesc, icon: Icon }, i) => (
+      <Card
+        key={i}
+        title={title}
+        desc={getDynamicDesc(title) || baseDesc}
+        icon={<Icon className="inline mr-2 w-5 h-5 text-gray-700" />}
+      />
     ));
   };
 
   const renderStretchCard = () => {
+    if (!leaveData[role]) return null;
+
+    const tableData =
+      role === "employee"
+        ? leaveData[role].leaveHistory || []
+        : leaveData[role].leaveRequests || [];
+
     if (role === "admin" || role === "hr") {
       return (
-        <Card
-          title="Leave Requests"
-          desc="Detailed view and management of leave requests."
-          stretch
-        />
+        <div className="bg-white p-4 rounded-lg shadow w-full">
+          <h2 className="text-lg font-semibold mb-2">Leave Requests</h2>
+          <p className="text-gray-600 mb-4">
+            Detailed view and management of leave requests.
+          </p>
+          {tableData.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="min-w-full border-collapse">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Hash className="inline mr-2 w-4 h-4" />
+                      ID
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <User className="inline mr-2 w-4 h-4" />
+                      Employee
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Tag className="inline mr-2 w-4 h-4" />
+                      Leave Type
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Calendar className="inline mr-2 w-4 h-4" />
+                      Start Date
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Calendar className="inline mr-2 w-4 h-4" />
+                      End Date
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <CircleDot className="inline mr-2 w-4 h-4" />
+                      Status
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <MessageSquare className="inline mr-2 w-4 h-4" />
+                      Reason
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData.map((item, index) => (
+                    <tr
+                      key={index}
+                      className="border-b hover:bg-gray-50 transition-colors"
+                    >
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.id}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.employeeName}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.leaveType}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.startDate}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.endDate}
+                      </td>
+                      <td className="px-4 py-2 text-sm">
+                        <span
+                          className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                            item.status === "Approved"
+                              ? "bg-green-100 text-green-800"
+                              : item.status === "Pending"
+                              ? "bg-yellow-100 text-yellow-800"
+                              : "bg-red-100 text-red-800"
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.reason}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="text-gray-600">No leave requests available.</p>
+          )}
+        </div>
       );
     }
     if (role === "employee") {
       return (
-        <Card
-          title="My Leave History"
-          desc="See your leave application history and status."
-          stretch
-        />
+        <div className="bg-white p-4 rounded-lg shadow w-full">
+          <h2 className="text-lg font-semibold mb-2">My Leave History</h2>
+          <p className="text-gray-600 mb-4">
+            See your leave application history and status.
+          </p>
+          {tableData.length > 0 ? (
+            <div className="overflow-x-auto">
+              <table className="min-w-full border-collapse">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Hash className="inline mr-2 w-4 h-4" />
+                      ID
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Tag className="inline mr-2 w-4 h-4" />
+                      Leave Type
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Calendar className="inline mr-2 w-4 h-4" />
+                      Start Date
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <Calendar className="inline mr-2 w-4 h-4" />
+                      End Date
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <CircleDot className="inline mr-2 w-4 h-4" />
+                      Status
+                    </th>
+                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                      <MessageSquare className="inline mr-2 w-4 h-4" />
+                      Reason
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData.map((item, index) => (
+                    <tr
+                      key={index}
+                      className="border-b hover:bg-gray-50 transition-colors"
+                    >
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.id}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.leaveType}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.startDate}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.endDate}
+                      </td>
+                      <td className="px-4 py-2 text-sm">
+                        <span
+                          className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                            item.status === "Approved"
+                              ? "bg-green-100 text-green-800"
+                              : item.status === "Pending"
+                              ? "bg-yellow-100 text-yellow-800"
+                              : "bg-red-100 text-red-800"
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-600">
+                        {item.reason}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="text-gray-600">No leave history available.</p>
+          )}
+        </div>
       );
     }
     return null;
   };
+
+  if (loading) {
+    return <div className="text-center text-gray-600">Loading...</div>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto p-8 bg-white rounded-2xl shadow-xl">
@@ -69,15 +347,17 @@ const LeaveContent = ({ role }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
         {renderFlexCards()}
       </div>
-
       <div>{renderStretchCard()}</div>
     </div>
   );
 };
 
-const Card = ({ title, desc, stretch }) => (
-  <div className={`bg-white p-4 rounded-lg shadow ${stretch ? "w-full" : ""}`}>
-    <h2 className="text-lg font-semibold mb-2">{title}</h2>
+const Card = ({ title, desc, icon }) => (
+  <div className="bg-white p-4 rounded-lg shadow">
+    <h2 className="text-lg font-semibold mb-2 flex items-center">
+      {icon}
+      {title}
+    </h2>
     <p className="text-gray-600">{desc}</p>
   </div>
 );

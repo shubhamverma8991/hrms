@@ -1,0 +1,91 @@
+{
+  "admin": {
+    "pendingRequests": 5,
+    "approvedThisMonth": 12,
+    "rejectedThisMonth": 3,
+    "onLeaveToday": 2,
+    "leaveRequests": [
+      {
+        "id": "REQ001",
+        "employeeName": "John Doe",
+        "leaveType": "Annual",
+        "startDate": "2025-06-01",
+        "endDate": "2025-06-05",
+        "status": "Pending",
+        "reason": "Family vacation"
+      },
+      {
+        "id": "REQ002",
+        "employeeName": "Jane Smith",
+        "leaveType": "Sick",
+        "startDate": "2025-05-28",
+        "endDate": "2025-05-30",
+        "status": "Approved",
+        "reason": "Medical appointment"
+      },
+      {
+        "id": "REQ003",
+        "employeeName": "Mike Johnson",
+        "leaveType": "Casual",
+        "startDate": "2025-05-25",
+        "endDate": "2025-05-27",
+        "status": "Rejected",
+        "reason": "Insufficient notice"
+      }
+    ]
+  },
+  "hr": {
+    "pendingRequests": 4,
+    "approvedThisMonth": 10,
+    "rejectedThisMonth": 2,
+    "onLeaveToday": 1,
+    "leaveRequests": [
+      {
+        "id": "REQ004",
+        "employeeName": "Emily Davis",
+        "leaveType": "Annual",
+        "startDate": "2025-06-02",
+        "endDate": "2025-06-04",
+        "status": "Pending",
+        "reason": "Personal trip"
+      },
+      {
+        "id": "REQ005",
+        "employeeName": "Sarah Brown",
+        "leaveType": "Sick",
+        "startDate": "2025-05-29",
+        "endDate": "2025-05-30",
+        "status": "Approved",
+        "reason": "Flu"
+      }
+    ]
+  },
+  "employee": {
+    "availableLeave": {
+      "annual": 15,
+      "sick": 10,
+      "casual": 5
+    },
+    "pendingRequests": 2,
+    "approvedThisYear": 8,
+    "sickLeaveUsed": 3,
+    "leaveHistory": [
+      {
+        "id": "REQ006",
+        "leaveType": "Annual",
+        "startDate": "2025-04-10",
+        "endDate": "2025-04-15",
+        "status": "Approved",
+        "reason": "Vacation"
+      },
+      {
+        "id": "REQ007",
+        "leaveType": "Sick",
+        "startDate": "2025-05-20",
+        "endDate": "2025-05-22",
+        "status": "Pending",
+        "reason": "Fever"
+      }
+    ]
+  }
+}
