@@ -1,0 +1,32 @@
+{
+  "dailyRecords": [
+    {
+      "date": "2025-05-01",
+      "clockIn": "09:00 AM",
+      "clockOut": "06:00 PM",
+      "hours": 9,
+      "status": "Present"
+    },
+    {
+      "date": "2025-05-02",
+      "clockIn": "09:15 AM",
+      "clockOut": "06:00 PM",
+      "hours": 8.75,
+      "status": "Late"
+    },
+    {
+      "date": "2025-05-03",
+      "clockIn": "09:00 AM",
+      "clockOut": "06:00 PM",
+      "hours": 9,
+      "status": "Present"
+    },
+    {
+      "date": "2025-05-04",
+      "clockIn": "--",
+      "clockOut": "--",
+      "hours": 0,
+      "status": "Leave"
+    }
+  ]
+}

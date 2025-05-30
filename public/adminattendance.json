@@ -1,0 +1,40 @@
+{
+  "allEmployees": [
+    {
+      "id": 101,
+      "name": "Alice Johnson",
+      "dept": "IT",
+      "clockIn": "09:00 AM",
+      "clockOut": "06:00 PM",
+      "hours": 9,
+      "status": "Present"
+    },
+    {
+      "id": 102,
+      "name": "Bob Smith",
+      "dept": "HR",
+      "clockIn": "09:20 AM",
+      "clockOut": "06:00 PM",
+      "hours": 8.5,
+      "status": "Late"
+    },
+    {
+      "id": 103,
+      "name": "Carol White",
+      "dept": "Finance",
+      "clockIn": "09:00 AM",
+      "clockOut": "06:00 PM",
+      "hours": 9,
+      "status": "Present"
+    },
+    {
+      "id": 104,
+      "name": "David Brown",
+      "dept": "Marketing",
+      "clockIn": "--",
+      "clockOut": "--",
+      "hours": 0,
+      "status": "Leave"
+    }
+  ]
+}

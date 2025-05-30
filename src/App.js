@@ -15,8 +15,7 @@ import Employee from "./components/employee/employee";
 import Layout from "./components/layout/layout";
 import Task from "./components/tasks/task";
 import Report from "./components/report/report";
-import Attendance from "./components/attendance/attendance";
-
+import Attendance from "../src/Attendance/Attendancee"
 function App() {
   const [role, setRole] = useState(null);
 
@@ -76,7 +75,7 @@ function App() {
                 path="/attendance"
                 element={
                   <Layout role={role}>
-                    <Attendance />
+                  <Attendance role={role}/>
                   </Layout>
                 }
               />
