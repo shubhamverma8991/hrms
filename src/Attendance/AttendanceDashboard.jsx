@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MetricCard from "./Metriccard.jsx";
+import MetricCard from "../components/Metriccard.jsx";
 import { TrendingUp } from 'lucide-react';
 import { CircleCheckBig } from 'lucide-react';
 import { CircleAlert } from 'lucide-react';
@@ -62,3 +62,19 @@ const AttendanceDashboard = () => {
 };
 
 export default AttendanceDashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
