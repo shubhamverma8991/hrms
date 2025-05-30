@@ -29,7 +29,7 @@ export default function NavBar({ role }) {
   const navItems = {
     admin: [
       { name: "Dashboard", path: "/dashboard" },
-      { name: "Employees", path: "/employees" },
+      { name: "Employees", path: "/employee" },
       { name: "Leave", path: "/leave" },
       { name: "Reports", path: "/reports" },
       { name: "Attendance", path: "/attendance" },
@@ -38,7 +38,7 @@ export default function NavBar({ role }) {
       { name: "Dashboard", path: "/dashboard" },
       { name: "Leave", path: "/leave" },
       { name: "Reports", path: "/reports" },
-      { name: "Employees", path: "/employees" },
+      { name: "Employees", path: "/employee" },
     ],
     employee: [
       { name: "Dashboard", path: "/dashboard" },
