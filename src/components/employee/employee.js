@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../NavBar";
 import {
   Users,
   UserCheck,
@@ -316,7 +315,7 @@ const Employee = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <NavBar role={role} />
+      {/* /  <NavBar role={role} /> */}
       <div className="py-10">
         <EmployeeContent role={role} />
       </div>

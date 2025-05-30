@@ -1,28 +1,86 @@
-[{
+[
+  {
     "users": [
       { "email": "admin@gmail.com", "password": "admin123", "role": "admin" },
       { "email": "hr@gmail.com", "password": "hr123", "role": "hr" },
-      { "email": "employee@gmail.com", "password": "emp123", "role": "employee" }
+      {
+        "email": "employee@gmail.com",
+        "password": "emp123",
+        "role": "employee"
+      },
+      {
+        "email": "employee2@gmail.com",
+        "password": "emp123",
+        "role": "employee"
+      }
     ],
-  
+
     "infoCards": {
       "admin": [
-        { "title": "Total Employees", "value": "245", "note": "+12 from last month" },
-        { "title": "Active Employees", "value": "235", "note": "96% of total workforce" },
-        { "title": "On Leave Today", "value": "12", "note": "5% of total workforce" },
-        { "title": "Open Positions", "value": "8", "note": "3 in technical department" }
+        {
+          "title": "Total Employees",
+          "value": "245",
+          "note": "+12 from last month"
+        },
+        {
+          "title": "Active Employees",
+          "value": "235",
+          "note": "96% of total workforce"
+        },
+        {
+          "title": "On Leave Today",
+          "value": "12",
+          "note": "5% of total workforce"
+        },
+        {
+          "title": "Open Positions",
+          "value": "8",
+          "note": "3 in technical department"
+        }
       ],
       "hr": [
-        { "title": "Total Employees", "value": "245", "note": "+12 from last month" },
-        { "title": "Leave Requests", "value": "18", "note": "8 pending approval" },
-        { "title": "Attendance Today", "value": "92%", "note": "Above monthly average" },
-        { "title": "Open Positions", "value": "8", "note": "3 in technical department" }
+        {
+          "title": "Total Employees",
+          "value": "245",
+          "note": "+12 from last month"
+        },
+        {
+          "title": "Leave Requests",
+          "value": "18",
+          "note": "8 pending approval"
+        },
+        {
+          "title": "Attendance Today",
+          "value": "92%",
+          "note": "Above monthly average"
+        },
+        {
+          "title": "Open Positions",
+          "value": "8",
+          "note": "3 in technical department"
+        }
       ],
       "employee": [
-        { "title": "Available Leave", "value": "18 days", "note": "5 days used this year" },
-        { "title": "Attendance Rate", "value": "98.5%", "note": "Above department average" },
-        { "title": "Pending Requests", "value": "1", "note": "Leave request for June" },
-        { "title": "Performance Score", "value": "4.2/5", "note": "Last quarterly review" }
+        {
+          "title": "Available Leave",
+          "value": "18 days",
+          "note": "5 days used this year"
+        },
+        {
+          "title": "Attendance Rate",
+          "value": "98.5%",
+          "note": "Above department average"
+        },
+        {
+          "title": "Pending Requests",
+          "value": "1",
+          "note": "Leave request for June"
+        },
+        {
+          "title": "Performance Score",
+          "value": "4.2/5",
+          "note": "Last quarterly review"
+        }
       ]
     },
     "leaveRequests": [
@@ -31,9 +89,21 @@
       { "name": "David Wilson", "details": "Personal Leave: June 2-3" }
     ],
     "onboardItems": [
-      { "name": "Sarah Johnson", "title": "Senior Developer - May 15", "status": "Complete" },
-      { "name": "Robert Lee", "title": "UX Designer - May 20", "status": "In Progress" },
-      { "name": "Emily Rodriguez", "title": "Marketing Specialist - May 22", "status": "In Progress" }
+      {
+        "name": "Sarah Johnson",
+        "title": "Senior Developer - May 15",
+        "status": "Complete"
+      },
+      {
+        "name": "Robert Lee",
+        "title": "UX Designer - May 20",
+        "status": "In Progress"
+      },
+      {
+        "name": "Emily Rodriguez",
+        "title": "Marketing Specialist - May 22",
+        "status": "In Progress"
+      }
     ],
     "recentActivities": [
       {
@@ -86,5 +156,4 @@
       "joined": "March 15, 2020"
     }
   }
-  
-]  
+]
