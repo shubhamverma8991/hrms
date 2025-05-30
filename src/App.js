@@ -14,6 +14,8 @@ import Leave from "./components/leave/leave";
 import Employee from "./components/employee/employee";
 import Layout from "./components/layout/layout";
 import Task from "./components/tasks/task";
+import Report from "./components/report/report";
+import Attendance from "./components/attendance/attendance";
 
 function App() {
   const [role, setRole] = useState(null);
@@ -59,6 +61,22 @@ function App() {
                 element={
                   <Layout role={role}>
                     <Task />
+                  </Layout>
+                }
+              />
+              <Route
+                path="/reports"
+                element={
+                  <Layout role={role}>
+                    <Report />
+                  </Layout>
+                }
+              />
+              <Route
+                path="/attendance"
+                element={
+                  <Layout role={role}>
+                    <Attendance />
                   </Layout>
                 }
               />
