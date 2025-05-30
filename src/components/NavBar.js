@@ -36,13 +36,15 @@ export default function NavBar({ role }) {
     ],
     hr: [
       { name: "Dashboard", path: "/dashboard" },
+      { name: "Employees", path: "/employee" },
       { name: "Leave", path: "/leave" },
       { name: "Reports", path: "/reports" },
-      { name: "Employees", path: "/employee" },
+      { name: "Attendance", path: "/attendance" },
+      
     ],
     employee: [
       { name: "Dashboard", path: "/dashboard" },
-      { name: "Leave", path: " /leave" },
+      { name: "Leave", path: "/leave" },
       { name: "Tasks", path: "/tasks" },
       { name: "Attendance", path: "/attendance" },
     ],
@@ -57,16 +59,7 @@ export default function NavBar({ role }) {
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-r from-blue-900/80 via-blue-800/80 to-blue-900/80 backdrop-blur-lg shadow-2xl border-b border-[#4B5EAA]">
       <div className="flex items-center space-x-4">
-        {/* <span
-          className="text-[#FFD700] font-extrabold text-2xl tracking-tight drop-shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
-          style={{
-            textShadow: "0 2px 16px #FFD700, 0 1px 2px #000",
-            letterSpacing: "0.1em",
-          }}
-          onClick={() => navigate("/")}
-        >
-          HR<span className="text-[#F5F5F5]">MS</span>
-        </span> */}
+       
       </div>
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-4 items-center">
