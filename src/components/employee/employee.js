@@ -18,6 +18,11 @@ import {
   UserPlus,
 } from "lucide-react";
 
+const calculateDepartmentCount = (employees) => {
+  const uniqueDepartments = new Set(employees.map(emp => emp.department));
+  return uniqueDepartments.size;
+};
+
 const EmployeeContent = ({ role }) => {
   const [employeeData, setEmployeeData] = useState({
     summary: {},
@@ -67,21 +72,13 @@ const EmployeeContent = ({ role }) => {
     if (!employeeData.summary) return "";
     switch (title) {
       case "Total Employees":
-        return `${
-          employeeData.summary.totalEmployees || 0
-        } employees in the organization.`;
+        return `${employeeData.summary.totalEmployees || 0} employees in the organization.`;
       case "Active Employees":
-        return `${
-          employeeData.summary.activeEmployees || 0
-        } employees currently active.`;
+        return `${employeeData.summary.activeEmployees || 0} employees currently active.`;
       case "Inactive Employees":
-        return `${
-          employeeData.summary.inactiveEmployees || 0
-        } employees currently inactive.`;
+        return `${employeeData.summary.inactiveEmployees || 0} employees currently inactive.`;
       case "Departments":
-        return `${
-          employeeData.summary.departments || 0
-        } departments in the organization.`;
+        return `${employeeData.summary.departments || 0} departments in the organization.`;
       default:
         return "";
     }
@@ -107,7 +104,14 @@ const EmployeeContent = ({ role }) => {
     const updatedEmployees = employeeData.employees.map((emp) =>
       emp.id === id ? { ...emp, ...formData } : emp
     );
-    setEmployeeData({ ...employeeData, employees: updatedEmployees });
+    setEmployeeData({
+      ...employeeData,
+      employees: updatedEmployees,
+      summary: {
+        ...employeeData.summary,
+        departments: calculateDepartmentCount(updatedEmployees),
+      },
+    });
     setEditingEmployee(null);
   };
 
@@ -120,14 +124,10 @@ const EmployeeContent = ({ role }) => {
         ...employeeData,
         employees: updatedEmployees,
         summary: {
-          ...employeeData.summary,
           totalEmployees: updatedEmployees.length,
-          activeEmployees: updatedEmployees.filter(
-            (emp) => emp.status === "Active"
-          ).length,
-          inactiveEmployees: updatedEmployees.filter(
-            (emp) => emp.status === "Inactive"
-          ).length,
+          activeEmployees: updatedEmployees.filter(emp => emp.status === "Active").length,
+          inactiveEmployees: updatedEmployees.filter(emp => emp.status === "Inactive").length,
+          departments: calculateDepartmentCount(updatedEmployees),
         },
       });
     }
@@ -143,21 +143,16 @@ const EmployeeContent = ({ role }) => {
       ...employeeData,
       employees: updatedEmployees,
       summary: {
-        ...employeeData.summary,
-        activeEmployees: updatedEmployees.filter(
-          (emp) => emp.status === "Active"
-        ).length,
-        inactiveEmployees: updatedEmployees.filter(
-          (emp) => emp.status === "Inactive"
-        ).length,
+        totalEmployees: updatedEmployees.length,
+        activeEmployees: updatedEmployees.filter(emp => emp.status === "Active").length,
+        inactiveEmployees: updatedEmployees.filter(emp => emp.status === "Inactive").length,
+        departments: calculateDepartmentCount(updatedEmployees),
       },
     });
   };
 
   const handleAddEmployee = () => {
-    const newId = `EMP${(employeeData.employees.length + 1)
-      .toString()
-      .padStart(3, "0")}`;
+    const newId = `EMP${(employeeData.employees.length + 1).toString().padStart(3, "0")}`;
     const newEmployee = {
       id: newId,
       name: "New Employee",
@@ -167,13 +162,15 @@ const EmployeeContent = ({ role }) => {
       status: "Active",
       joined: new Date().toISOString().split("T")[0],
     };
+    const updatedEmployees = [...employeeData.employees, newEmployee];
     setEmployeeData({
       ...employeeData,
-      employees: [...employeeData.employees, newEmployee],
+      employees: updatedEmployees,
       summary: {
-        ...employeeData.summary,
-        totalEmployees: employeeData.employees.length + 1,
-        activeEmployees: employeeData.summary.activeEmployees + 1,
+        totalEmployees: updatedEmployees.length,
+        activeEmployees: updatedEmployees.filter(emp => emp.status === "Active").length,
+        inactiveEmployees: updatedEmployees.filter(emp => emp.status === "Inactive").length,
+        departments: calculateDepartmentCount(updatedEmployees),
       },
     });
     setEditingEmployee(newId);
@@ -195,144 +192,56 @@ const EmployeeContent = ({ role }) => {
         <table className="min-w-full border-collapse">
           <thead>
             <tr className="bg-gray-100">
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <Hash className="inline mr-2 w-4 h-4" />
-                ID
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <User className="inline mr-2 w-4 h-4" />
-                Name
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <Mail className="inline mr-2 w-4 h-4" />
-                Email
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <Building className="inline mr-2 w-4 h-4" />
-                Department
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <Briefcase className="inline mr-2 w-4 h-4" />
-                Position
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <CircleDot className="inline mr-2 w-4 h-4" />
-                Status
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                <Calendar className="inline mr-2 w-4 h-4" />
-                Joined
-              </th>
-              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                Actions
-              </th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><Hash className="inline mr-2 w-4 h-4" />ID</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><User className="inline mr-2 w-4 h-4" />Name</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><Mail className="inline mr-2 w-4 h-4" />Email</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><Building className="inline mr-2 w-4 h-4" />Department</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><Briefcase className="inline mr-2 w-4 h-4" />Position</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><CircleDot className="inline mr-2 w-4 h-4" />Status</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700"><Calendar className="inline mr-2 w-4 h-4" />Joined</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {employeeData.employees.map((employee, index) => (
-              <tr
-                key={index}
-                className="border-b hover:bg-gray-50 transition-colors"
-              >
+            {employeeData.employees.map((employee) => (
+              <tr key={employee.id} className="border-b hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-2 text-sm text-gray-600">{employee.id}</td>
                 <td className="px-4 py-2 text-sm text-gray-600">
-                  {employee.id}
+                  {editingEmployee === employee.id ? (
+                    <input name="name" value={formData.name} onChange={handleInputChange} className="border rounded px-2 py-1 w-full" />
+                  ) : employee.name}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600">
                   {editingEmployee === employee.id ? (
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="border rounded px-2 py-1 w-full"
-                    />
-                  ) : (
-                    employee.name
-                  )}
+                    <input name="email" value={formData.email} onChange={handleInputChange} className="border rounded px-2 py-1 w-full" />
+                  ) : employee.email}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600">
                   {editingEmployee === employee.id ? (
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="border rounded px-2 py-1 w-full"
-                    />
-                  ) : (
-                    employee.email
-                  )}
+                    <input name="department" value={formData.department} onChange={handleInputChange} className="border rounded px-2 py-1 w-full" />
+                  ) : employee.department}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-600">
                   {editingEmployee === employee.id ? (
-                    <input
-                      type="text"
-                      name="department"
-                      value={formData.department}
-                      onChange={handleInputChange}
-                      className="border rounded px-2 py-1 w-full"
-                    />
-                  ) : (
-                    employee.department
-                  )}
-                </td>
-                <td className="px-4 py-2 text-sm text-gray-600">
-                  {editingEmployee === employee.id ? (
-                    <input
-                      type="text"
-                      name="position"
-                      value={formData.position}
-                      onChange={handleInputChange}
-                      className="border rounded px-2 py-1 w-full"
-                    />
-                  ) : (
-                    employee.position
-                  )}
+                    <input name="position" value={formData.position} onChange={handleInputChange} className="border rounded px-2 py-1 w-full" />
+                  ) : employee.position}
                 </td>
                 <td className="px-4 py-2 text-sm">
-                  <span
-                    className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
-                      employee.status === "Active"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
-                    }`}
-                  >
+                  <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${employee.status === "Active" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
                     {employee.status}
                   </span>
                 </td>
-                <td className="px-4 py-2 text-sm text-gray-600">
-                  {employee.joined}
-                </td>
+                <td className="px-4 py-2 text-sm text-gray-600">{employee.joined}</td>
                 <td className="px-4 py-2 text-sm flex space-x-2">
                   {editingEmployee === employee.id ? (
-                    <button
-                      onClick={() => handleSave(employee.id)}
-                      className="text-blue-900 bg-[#FFD700] px-2 py-1 rounded hover:bg-[#FFEA80] transition"
-                    >
-                      Save
-                    </button>
+                    <button onClick={() => handleSave(employee.id)} className="text-blue-900 bg-[#FFD700] px-2 py-1 rounded hover:bg-[#FFEA80] transition">Save</button>
                   ) : (
-                    <button
-                      onClick={() => handleEdit(employee)}
-                      className="text-gray-600 hover:text-blue-900"
-                    >
-                      <Edit className="w-4 h-4" />
-                    </button>
+                    <button onClick={() => handleEdit(employee)} className="text-gray-600 hover:text-blue-900"><Edit className="w-4 h-4" /></button>
                   )}
                   {role === "admin" && (
                     <>
-                      <button
-                        onClick={() => handleDelete(employee.id)}
-                        className="text-gray-600 hover:text-red-600"
-                      >
-                        <Trash className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => handleStatusToggle(employee.id)}
-                        className="text-gray-600 hover:text-green-600"
-                      >
-                        <ToggleRight className="w-4 h-4" />
-                      </button>
+                      <button onClick={() => handleDelete(employee.id)} className="text-gray-600 hover:text-red-600"><Trash className="w-4 h-4" /></button>
+                      <button onClick={() => handleStatusToggle(employee.id)} className="text-gray-600 hover:text-green-600"><ToggleRight className="w-4 h-4" /></button>
                     </>
                   )}
                 </td>

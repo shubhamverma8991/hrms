@@ -1,0 +1,64 @@
+{
+  "summary": {
+    "totalEmployees": 6,
+    "activeEmployees": 4,
+    "inactiveEmployees": 2,
+    "departments": 4
+  },
+  "employees": [
+    {
+      "id": "EMP001",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@company.com",
+      "department": "Engineering",
+      "position": "Frontend Developer",
+      "status": "Active",
+      "joined": "2023-02-14"
+    },
+    {
+      "id": "EMP002",
+      "name": "Bob Smith",
+      "email": "bob.smith@company.com",
+      "department": "Marketing",
+      "position": "Content Strategist",
+      "status": "Inactive",
+      "joined": "2021-08-23"
+    },
+    {
+      "id": "EMP003",
+      "name": "Charlie Kim",
+      "email": "charlie.kim@company.com",
+      "department": "Sales",
+      "position": "Sales Manager",
+      "status": "Active",
+      "joined": "2022-06-12"
+    },
+    {
+      "id": "EMP004",
+      "name": "Diana Lopez",
+      "email": "diana.lopez@company.com",
+      "department": "Human Resources",
+      "position": "HR Executive",
+      "status": "Active",
+      "joined": "2020-11-01"
+    },
+    {
+      "id": "EMP005",
+      "name": "Ethan Brown",
+      "email": "ethan.brown@company.com",
+      "department": "Engineering",
+      "position": "Backend Developer",
+      "status": "Inactive",
+      "joined": "2022-04-07"
+    },
+    {
+      "id": "EMP006",
+      "name": "Fiona White",
+      "email": "fiona.white@company.com",
+      "department": "Finance",
+      "position": "Accountant",
+      "status": "Active",
+      "joined": "2023-09-18"
+    }
+  ]
+}
