@@ -6,7 +6,7 @@ import { TrendingUp, CircleCheckBig, CircleAlert, Clock4 } from "lucide-react";
 
 export default function Attendance({role}) {
 //   const { role } = currentUser;
-  console.log("role ", role);
+//   console.log("role ", role);
 
   const [dailyRecords, setDailyRecords] = useState([]);
   const [allEmployees, setAllEmployees] = useState([]);
