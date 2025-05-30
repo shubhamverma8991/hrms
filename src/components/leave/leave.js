@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../NavBar";
 import {
   Clock,
   CheckCircle,
@@ -379,7 +378,7 @@ const Leave = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <NavBar role={role} />
+      {/* <NavBar role={role} /> */}
       <div className="py-10">
         <LeaveContent role={role} />
       </div>

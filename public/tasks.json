@@ -1,0 +1,42 @@
+[
+  {
+    "email": "employee@gmail.com",
+    "currentProjects": [
+      {
+        "name": "HR Portal Redesign",
+        "description": "Improving UI/UX for the internal HR portal.",
+        "startDate": "2025-04-01",
+        "collaborators": ["Jane Smith", "Rahul Verma"]
+      }
+    ],
+    "projectHistory": [
+      {
+        "name": "Leave Management Revamp",
+        "description": "Built automated workflows for leave approval.",
+        "startDate": "2024-11-10",
+        "endDate": "2025-03-20",
+        "collaborators": ["Rita Patel", "Nikhil Mehta"]
+      }
+    ]
+  },
+  {
+    "email": "employee2@gmail.com",
+    "currentProjects": [
+      {
+        "name": "HR Portal Redesign",
+        "description": "Improving UI/UX for the internal HR portal.",
+        "startDate": "2025-04-01",
+        "collaborators": ["Jane Smith", "Rahul Verma"]
+      }
+    ],
+    "projectHistory": [
+      {
+        "name": "Leave Management Revamp",
+        "description": "Built automated workflows for leave approval.",
+        "startDate": "2024-11-10",
+        "endDate": "2025-03-20",
+        "collaborators": ["Rita Patel", "Nikhil Mehta"]
+      }
+    ]
+  }
+]

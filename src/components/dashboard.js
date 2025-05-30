@@ -1,7 +1,6 @@
 // Dashboard.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
 import InfoCard from "./common/InfoCard";
 import LeaveRequest from "./common/LeaveRequest";
 import OnboardItem from "./common/OnboardItem";
@@ -137,7 +136,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* <NavBar role={role} /> */}
-      <NavBar role={role} />
+      {/* <NavBar role={role} /> */}
       <DashboardContent role={role} data={data} />
     </div>
   );
