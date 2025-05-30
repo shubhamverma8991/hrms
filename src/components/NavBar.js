@@ -10,12 +10,12 @@ import {
   ClipboardList,
   ListTodo,
 } from "lucide-react";
- 
+
 export default function NavBar({ role }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
- 
+
   // Map nav items to Lucide icons
   const iconMap = {
     Dashboard: <Home className="inline mr-2 w-5 h-5" />,
@@ -25,7 +25,7 @@ export default function NavBar({ role }) {
     Attendance: <ClipboardList className="inline mr-2 w-5 h-5" />,
     Tasks: <ListTodo className="inline mr-2 w-5 h-5" />,
   };
- 
+
   const navItems = {
     admin: [
       { name: "Dashboard", path: "/dashboard" },
@@ -47,43 +47,39 @@ export default function NavBar({ role }) {
       { name: "Attendance", path: "/attendance" },
     ],
   };
- 
+
   const handleLogout = () => {
     localStorage.removeItem("role");
     localStorage.removeItem("email");
     navigate("/login");
   };
- 
+
   return (
-    // <nav className="fixed w-full z-50 bg-gradient-to-r from-gray-900/80 via-gray-800/80 to-gray-900/80 backdrop-blur-lg shadow-2xl border-b border-gray-700">
-    <nav className="fixed w-full z-50 bg-gradient-to-r from-gray-900/80 via-gray-800/80 to-gray-900/80 backdrop-blur-lg shadow-2xl border-b border-gray-700">
-      {/* <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center"> */}
+    <nav className="fixed w-full z-50 bg-gradient-to-r from-blue-900/80 via-blue-800/80 to-blue-900/80 backdrop-blur-lg shadow-2xl border-b border-[#4B5EAA]">
+      <div className="flex items-center space-x-4">
+        {/* <span
+          className="text-[#FFD700] font-extrabold text-2xl tracking-tight drop-shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+          style={{
+            textShadow: "0 2px 16px #FFD700, 0 1px 2px #000",
+            letterSpacing: "0.1em",
+          }}
+          onClick={() => navigate("/")}
+        >
+          HR<span className="text-[#F5F5F5]">MS</span>
+        </span> */}
+      </div>
+      {/* Desktop Menu */}
+      <div className="hidden md:flex space-x-4 items-center">
         {/* Logo/Brand */}
         <div className="flex items-center space-x-4">
           <span
-            className="text-cyan-400 font-extrabold text-2xl tracking-tight drop-shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+            className="text-[#00246B] font-extrabold text-2xl tracking-tight drop-shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
             style={{
-              textShadow: "0 2px 16px #06b6d4, 0 1px 2px #000",
               letterSpacing: "0.1em",
             }}
             onClick={() => navigate("/")}
           >
-            HR<span className="text-white">MS</span>
-          </span>
-        </div>
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-4 items-center">
-        {/* Logo/Brand */}
-        <div className="flex items-center space-x-4">
-          <span
-            className="text-cyan-400 font-extrabold text-2xl tracking-tight drop-shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
-            style={{
-              textShadow: "0 2px 16px #06b6d4, 0 1px 2px #000",
-              letterSpacing: "0.1em",
-            }}
-            onClick={() => navigate("/")}
-          >
-            HR<span className="text-white">MS</span>
+            HR<span className="text-[#CADCFC]">MS</span>
           </span>
         </div>
         {/* Desktop Menu */}
@@ -92,11 +88,11 @@ export default function NavBar({ role }) {
             <button
               key={item.name}
               onClick={() => navigate(item.path)}
-              className={`relative text-cyan-300 font-medium px-3 py-2 rounded-lg transition
-                hover:bg-cyan-400/10 hover:text-white
+              className={`relative text-[#CADCFC] font-medium px-3 py-2 rounded-lg transition
+                hover:bg-[#00246B]/10 hover:text-[#00246B]
                 ${
                   location.pathname === item.path
-                    ? "ring-2 ring-cyan-400 bg-cyan-400/10 text-white"
+                    ? "ring-2 ring-[#CADCFC] bg-[#00246B]/10 text-[#00246B]"
                     : ""
                 }
               `}
@@ -104,13 +100,13 @@ export default function NavBar({ role }) {
               {iconMap[item.name]}
               {item.name}
               {location.pathname === item.path && (
-                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-cyan-400 rounded-full"></span>
+                <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#F5F5F5] rounded-full"></span>
               )}
             </button>
           ))}
           <button
             onClick={handleLogout}
-            className="ml-4 text-gray-900 bg-cyan-400 px-4 py-2 rounded-lg font-semibold shadow hover:bg-cyan-300 transition"
+            className="ml-4 text-[#CADCFC] bg-[#00246B] px-4 py-2 rounded-lg font-semibold shadow hover:text-[#CADCFC] bg-[#00246B] transition"
           >
             Logout
           </button>
@@ -119,7 +115,7 @@ export default function NavBar({ role }) {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-cyan-300 focus:outline-none"
+            className="text-[#F5F5F5] focus:outline-none"
           >
             {menuOpen ? (
               <X className="h-7 w-7" />
@@ -140,7 +136,7 @@ export default function NavBar({ role }) {
       />
       {/* Mobile Menu Drawer */}
       <div
-        className={`md:hidden fixed top-0 right-0 w-3/4 max-w-xs h-full bg-gray-900/95 backdrop-blur-lg shadow-2xl z-50 transform transition-transform duration-300 ${
+        className={`md:hidden fixed top-0 right-0 w-3/4 max-w-xs h-full bg-blue-900/95 backdrop-blur-lg shadow-2xl z-50 transform transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -152,10 +148,10 @@ export default function NavBar({ role }) {
                 setMenuOpen(false);
                 navigate(item.path);
               }}
-              className={`block text-left text-cyan-300 font-medium px-3 py-2 rounded hover:bg-cyan-400/10 hover:text-white transition
+              className={`block text-left text-[#F5F5F5] font-medium px-3 py-2 rounded hover:bg-[#FFEA80]/10 hover:text-[#FFEA80] transition
                 ${
                   location.pathname === item.path
-                    ? "ring-2 ring-cyan-400 bg-cyan-400/10 text-white"
+                    ? "ring-2 ring-[#FFD700] bg-[#FFEA80]/10 text-[#FFEA80]"
                     : ""
                 }
               `}
@@ -169,7 +165,7 @@ export default function NavBar({ role }) {
               setMenuOpen(false);
               handleLogout();
             }}
-            className="block text-left text-gray-900 bg-cyan-400 px-3 py-2 rounded font-semibold hover:bg-cyan-300 transition"
+            className="block text-left text-blue-900 bg-[#FFD700] px-3 py-2 rounded font-semibold hover:bg-[#FFEA80] transition"
           >
             Logout
           </button>
@@ -178,4 +174,3 @@ export default function NavBar({ role }) {
     </nav>
   );
 }
- 
