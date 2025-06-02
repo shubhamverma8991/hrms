@@ -1,0 +1,151 @@
+{
+  "Users": "Users",
+  "UserCheck": "UserCheck",
+  "UserX": "UserX",
+  "Building": "Building",
+  "Hash": "Hash",
+  "User": "User",
+  "Mail": "Mail",
+  "Briefcase": "Briefcase",
+  "CircleDot": "CircleDot",
+  "Calendar": "Calendar",
+  "Edit": "Edit",
+  "Trash": "Trash",
+  "ToggleRight": "ToggleRight",
+  "UserPlus": "UserPlus",
+  "Clock": "Clock",
+  "CheckCircle": "CheckCircle",
+  "XCircle": "XCircle",
+  "UserMinus": "UserMinus",
+  "CalendarCheck": "CalendarCheck",
+  "Thermometer": "Thermometer",
+  "Tag": "Tag",
+  "MessageSquare": "MessageSquare",
+  "TrendingUp": "TrendingUp",
+  "CircleCheckBig": "CircleCheckBig",
+  "CircleAlert": "CircleAlert",
+  "Clock4": "Clock4",
+  "ListTodo": "ListTodo",
+  "Plus": "Plus",
+  "AlertCircle": "AlertCircle",
+  "cardData": {
+    "employee": {
+      "summary": [
+        {
+          "title": "Total Employees",
+          "desc": "Total number of employees.",
+          "icon": "Users",
+          "key": "totalEmployees"
+        },
+        {
+          "title": "Active Employees",
+          "desc": "Currently active employees.",
+          "icon": "UserCheck",
+          "key": "activeEmployees"
+        },
+        {
+          "title": "Inactive Employees",
+          "desc": "Currently inactive employees.",
+          "icon": "UserX",
+          "key": "inactiveEmployees"
+        },
+        {
+          "title": "Departments",
+          "desc": "Number of departments.",
+          "icon": "Building",
+          "key": "departments"
+        }
+      ]
+    },
+    "leave": {
+      "admin": [
+        {
+          "title": "Pending Requests",
+          "desc": "View all pending leave requests.",
+          "icon": "Clock",
+          "key": "pendingRequests",
+          "dynamicDesc": "{value} requests awaiting approval."
+        },
+        {
+          "title": "Approved This Month",
+          "desc": "Overview of approved leaves.",
+          "icon": "CheckCircle",
+          "key": "approvedThisMonth",
+          "dynamicDesc": "{value} leaves approved this month."
+        },
+        {
+          "title": "Rejected This Month",
+          "desc": "Details of rejected leave requests.",
+          "icon": "XCircle",
+          "key": "rejectedThisMonth",
+          "dynamicDesc": "{value} leaves rejected this month."
+        },
+        {
+          "title": "On Leave Today",
+          "desc": "Employees currently on leave.",
+          "icon": "UserMinus",
+          "key": "onLeaveToday",
+          "dynamicDesc": "{value} employees on leave today."
+        }
+      ],
+      "employee": [
+        {
+          "title": "Available Leave",
+          "desc": "Check your current leave balance.",
+          "icon": "CalendarCheck",
+          "key": "availableLeave",
+          "dynamicDesc": "Annual: {annual}, Sick: {sick}, Casual: {casual}"
+        },
+        {
+          "title": "Pending Requests",
+          "desc": "Your pending leave requests.",
+          "icon": "Clock",
+          "key": "pendingRequests",
+          "dynamicDesc": "{value} requests awaiting approval."
+        },
+        {
+          "title": "Approved This Year",
+          "desc": "Leaves approved this year.",
+          "icon": "CheckCircle",
+          "key": "approvedThisYear",
+          "dynamicDesc": "{value} leaves approved this year."
+        },
+        {
+          "title": "Sick Leave",
+          "desc": "Sick leave balance and usage.",
+          "icon": "Thermometer",
+          "key": "sickLeaveUsed",
+          "dynamicDesc": "{value} sick leaves used this year."
+        }
+      ]
+    },
+    "task": {
+      "summary": [
+        {
+          "title": "Total Tasks",
+          "desc": "tasks in the system.",
+          "icon": "ListTodo",
+          "key": "totalTasks"
+        },
+        {
+          "title": "Completed Tasks",
+          "desc": "tasks completed.",
+          "icon": "CheckSquare",
+          "key": "completedTasks"
+        },
+        {
+          "title": "Pending Tasks",
+          "desc": "tasks pending.",
+          "icon": "Clock",
+          "key": "pendingTasks"
+        },
+        {
+          "title": "High Priority",
+          "desc": "high priority tasks.",
+          "icon": "AlertCircle",
+          "key": "highPriority"
+        }
+      ]
+    }
+  }
+}

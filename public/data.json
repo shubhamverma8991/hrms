@@ -1,159 +1,163 @@
 [
   {
-    "users": [
-      { "email": "admin@gmail.com", "password": "admin123", "role": "admin" },
-      { "email": "hr@gmail.com", "password": "hr123", "role": "hr" },
-      {
-        "email": "employee@gmail.com",
-        "password": "emp123",
-        "role": "employee"
-      },
-      {
-        "email": "employee2@gmail.com",
-        "password": "emp123",
-        "role": "employee"
-      }
-    ],
-
-    "infoCards": {
-      "admin": [
-        {
-          "title": "Total Employees",
-          "value": "245",
-          "note": "+12 from last month"
-        },
-        {
-          "title": "Active Employees",
-          "value": "235",
-          "note": "96% of total workforce"
-        },
-        {
-          "title": "On Leave Today",
-          "value": "12",
-          "note": "5% of total workforce"
-        },
-        {
-          "title": "Open Positions",
-          "value": "8",
-          "note": "3 in technical department"
-        }
-      ],
-      "hr": [
-        {
-          "title": "Total Employees",
-          "value": "245",
-          "note": "+12 from last month"
-        },
-        {
-          "title": "Leave Requests",
-          "value": "18",
-          "note": "8 pending approval"
-        },
-        {
-          "title": "Attendance Today",
-          "value": "92%",
-          "note": "Above monthly average"
-        },
-        {
-          "title": "Open Positions",
-          "value": "8",
-          "note": "3 in technical department"
-        }
-      ],
-      "employee": [
-        {
-          "title": "Available Leave",
-          "value": "18 days",
-          "note": "5 days used this year"
-        },
-        {
-          "title": "Attendance Rate",
-          "value": "98.5%",
-          "note": "Above department average"
-        },
-        {
-          "title": "Pending Requests",
-          "value": "1",
-          "note": "Leave request for June"
-        },
-        {
-          "title": "Performance Score",
-          "value": "4.2/5",
-          "note": "Last quarterly review"
-        }
-      ]
-    },
-    "leaveRequests": [
-      { "name": "Michael Chen", "details": "Vacation: June 15-22" },
-      { "name": "Sarah Johnson", "details": "Sick Leave: May 28" },
-      { "name": "David Wilson", "details": "Personal Leave: June 2-3" }
-    ],
-    "onboardItems": [
-      {
-        "name": "Sarah Johnson",
-        "title": "Senior Developer - May 15",
-        "status": "Complete"
-      },
-      {
-        "name": "Robert Lee",
-        "title": "UX Designer - May 20",
-        "status": "In Progress"
-      },
-      {
-        "name": "Emily Rodriguez",
-        "title": "Marketing Specialist - May 22",
-        "status": "In Progress"
-      }
-    ],
-    "recentActivities": [
-      {
-        "icon": "👤",
-        "title": "New employee onboarded",
-        "details": "Sarah Johnson joined as Senior Developer",
-        "time": "2 hours ago"
-      },
-      {
-        "icon": "📅",
-        "title": "Leave request approved",
-        "details": "Michael Chen's vacation request (June 15–22)",
-        "time": "5 hours ago"
-      },
-      {
-        "icon": "📈",
-        "title": "Performance review completed",
-        "details": "Quarterly reviews for Engineering team",
-        "time": "Yesterday"
-      },
-      {
-        "icon": "⚠️",
-        "title": "Attendance issue flagged",
-        "details": "Multiple late arrivals for David Wilson",
-        "time": "2 days ago"
-      }
-    ],
-    "leaveItems": [
-      {
-        "type": "Vacation Leave",
-        "date": "March 10–15, 2024",
-        "status": "Approved"
-      },
-      {
-        "type": "Personal Leave",
-        "date": "June 5–7, 2024",
-        "status": "Pending"
-      },
-      {
-        "type": "Sick Leave",
-        "date": "February 2, 2024",
-        "status": "Rejected"
-      }
-    ],
-    "profileInfo": {
-      "name": "John Doe",
-      "department": "Engineering",
-      "position": "Senior Developer",
-      "manager": "Jane Smith",
-      "joined": "March 15, 2020"
-    }
+    "id": 1,
+    "email": "sophia.martin@techwave.com",
+    "name": "Sophia Martin",
+    "password": "admin123",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "email": "liam.brown@techwave.com",
+    "name": "Liam Brown",
+    "password": "hr123",
+    "role": "hr"
+  },
+  {
+    "id": 3,
+    "email": "olivia.davis@techwave.com",
+    "name": "Olivia Davis",
+    "password": "hr123",
+    "role": "hr"
+  },
+  {
+    "id": 4,
+    "email": "emma.jones@techwave.com",
+    "name": "Emma Jones",
+    "password": "emp1",
+    "role": "employee"
+  },
+  {
+    "id": 5,
+    "email": "noah.taylor@techwave.com",
+    "name": "Noah Taylor",
+    "password": "emp2",
+    "role": "employee"
+  },
+  {
+    "id": 6,
+    "email": "ava.thomas@techwave.com",
+    "name": "Ava Thomas",
+    "password": "emp3",
+    "role": "employee"
+  },
+  {
+    "id": 7,
+    "email": "william.hall@techwave.com",
+    "name": "William Hall",
+    "password": "emp4",
+    "role": "employee"
+  },
+  {
+    "id": 8,
+    "email": "mia.walker@techwave.com",
+    "name": "Mia Walker",
+    "password": "emp5",
+    "role": "employee"
+  },
+  {
+    "id": 9,
+    "email": "james.young@techwave.com",
+    "name": "James Young",
+    "password": "emp6",
+    "role": "employee"
+  },
+  {
+    "id": 10,
+    "email": "isabella.king@techwave.com",
+    "name": "Isabella King",
+    "password": "emp7",
+    "role": "employee"
+  },
+  {
+    "id": 11,
+    "email": "benjamin.scott@techwave.com",
+    "name": "Benjamin Scott",
+    "password": "emp8",
+    "role": "employee"
+  },
+  {
+    "id": 12,
+    "email": "charlotte.green@techwave.com",
+    "name": "Charlotte Green",
+    "password": "emp9",
+    "role": "employee"
+  },
+  {
+    "id": 13,
+    "email": "lucas.adams@techwave.com",
+    "name": "Lucas Adams",
+    "password": "emp10",
+    "role": "employee"
+  },
+  {
+    "id": 14,
+    "email": "amelia.baker@techwave.com",
+    "name": "Amelia Baker",
+    "password": "emp11",
+    "role": "employee"
+  },
+  {
+    "id": 15,
+    "email": "henry.gonzalez@techwave.com",
+    "name": "Henry Gonzalez",
+    "password": "emp12",
+    "role": "employee"
+  },
+  {
+    "id": 16,
+    "email": "evelyn.nelson@techwave.com",
+    "name": "Evelyn Nelson",
+    "password": "emp13",
+    "role": "employee"
+  },
+  {
+    "id": 17,
+    "email": "alexander.carter@techwave.com",
+    "name": "Alexander Carter",
+    "password": "emp14",
+    "role": "employee"
+  },
+  {
+    "id": 18,
+    "email": "harper.mitchell@techwave.com",
+    "name": "Harper Mitchell",
+    "password": "emp15",
+    "role": "employee"
+  },
+  {
+    "id": 19,
+    "email": "jackson.perez@techwave.com",
+    "name": "Jackson Perez",
+    "password": "emp16",
+    "role": "employee"
+  },
+  {
+    "id": 20,
+    "email": "ella.roberts@techwave.com",
+    "name": "Ella Roberts",
+    "password": "emp17",
+    "role": "employee"
+  },
+  {
+    "id": 21,
+    "email": "sebastian.turner@techwave.com",
+    "name": "Sebastian Turner",
+    "password": "emp18",
+    "role": "employee"
+  },
+  {
+    "id": 22,
+    "email": "scarlett.phillips@techwave.com",
+    "name": "Scarlett Phillips",
+    "password": "emp19",
+    "role": "employee"
+  },
+  {
+    "id": 23,
+    "email": "logan.campbell@techwave.com",
+    "name": "Logan Campbell",
+    "password": "emp20",
+    "role": "employee"
   }
 ]

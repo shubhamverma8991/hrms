@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../NavBar";
+import NavBar from "../common/NavBar";
 
 const Layout = ({ children }) => {
   const [role, setRole] = useState(null);
@@ -20,7 +20,8 @@ const Layout = ({ children }) => {
         </div>
       </div>
       <footer className="text-center text-sm text-gray-500 py-4">
-        &copy; {new Date().getFullYear()} SHUBHCO Pvt. Ltd. All rights reserved.
+        &copy; {new Date().getFullYear()} KLNOTINPLAYOFF Pvt. Ltd. All rights
+        reserved.
       </footer>
     </div>
   );

@@ -9,13 +9,13 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 import Login from "./components/login/login";
-import Dashboard from "./components/dashboard";
+import Dashboard from "./components/dashboard/dashboard";
 import Leave from "./components/leave/leave";
 import Employee from "./components/employee/employee";
-import Layout from "./components/layout/layout";
-import Task from "./components/tasks/task";
+import Task from "./components/task/task";
 import Report from "./components/report/report";
-import Attendance from "../src/Attendance/Attendancee"
+import Attendance from "./components/Attendance/Attendancee";
+
 function App() {
   const [role, setRole] = useState(null);
 
@@ -31,54 +31,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           {role && (
             <>
-              <Route
-                path="/dashboard"
-                element={
-                  <Layout role={role}>
-                    <Dashboard />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/leave"
-                element={
-                  <Layout role={role}>
-                    <Leave />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/employee"
-                element={
-                  <Layout role={role}>
-                    <Employee />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/tasks"
-                element={
-                  <Layout role={role}>
-                    <Task />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/reports"
-                element={
-                  <Layout role={role}>
-                    <Report />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/attendance"
-                element={
-                  <Layout role={role}>
-                  <Attendance role={role}/>
-                  </Layout>
-                }
-              />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/leave" element={<Leave />} />
+              <Route path="/employee" element={<Employee />} />
+              <Route path="/task" element={<Task />} />
+              <Route path="/reports" element={<Report />} />
+              <Route path="/attendance" element={<Attendance role={role} />} />
             </>
           )}
           <Route path="/" element={<Navigate to="/login" />} />

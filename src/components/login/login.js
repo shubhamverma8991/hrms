@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -8,23 +7,28 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Loaded users:", data[0].users);
-        setUsers(data[0].users);
-      })
-      .catch((err) => {
-        console.error("Error loading users:", err);
-      });
-  }, []);
-
-  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const role = localStorage.getItem("role");
+    if (role) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+    return newErrors;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,26 +36,13 @@ export default function Login() {
       ...prev,
       [name]: value,
     }));
+    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
         [name]: "",
       }));
     }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    }
-
-    return newErrors;
   };
 
   const handleSubmit = async (e) => {
@@ -65,143 +56,129 @@ export default function Login() {
 
     setIsLoading(true);
 
-    // Find matching user
-    const user = users.find(
-      (u) => u.email === formData.email && u.password === formData.password
-    );
+    try {
+      const response = await fetch(
+        "https://683d8044199a0039e9e5b723.mockapi.io/users"
+      );
+      const users = await response.json();
 
-    if (user) {
-      localStorage.setItem("role", user.role);
-      localStorage.setItem("email", user.email);
-      setTimeout(() => {
+      const user = users.find(
+        (u) => u.email === formData.email && u.password === formData.password
+      );
+
+      if (user) {
+        localStorage.setItem("role", user.role);
+        localStorage.setItem("email", user.email);
+        localStorage.setItem("name", user.name);
+        localStorage.setItem("userId", user.id);
         setIsLoading(false);
         navigate("/dashboard");
-      }, 1000);
-    } else {
+      } else {
+        setIsLoading(false);
+        setErrors({ submit: "Invalid email or password" });
+      }
+    } catch (error) {
+      console.error("Login error:", error);
       setIsLoading(false);
-      setErrors({ submit: "Invalid email or password" });
+      setErrors({ submit: "An error occurred. Please try again." });
     }
   };
 
-  // If already logged in, redirect to dashboard
-  useEffect(() => {
-    const role = localStorage.getItem("role");
-    if (role) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
-
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
-      <div className="flex-grow flex items-center justify-center">
-        <div className="max-w-md w-full space-y-8">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="mx-auto h-12 w-12 bg-indigo-600 rounded-full flex items-center justify-center mb-4">
-                <Lock className="h-6 w-6 text-white" />
-              </div>
-              <p className="mt-2 text-gray-600">Sign in to your account</p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-xl p-8">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome to HRMS
+          </h1>
+          <p className="text-gray-600">Please sign in to continue</p>
+        </div>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className={`mt-1 block w-full px-3 py-2 border ${
+                errors.email ? "border-red-300" : "border-gray-300"
+              } rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500`}
+            />
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+            )}
+          </div>
+
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              value={formData.password}
+              onChange={handleChange}
+              className={`mt-1 block w-full px-3 py-2 border ${
+                errors.password ? "border-red-300" : "border-gray-300"
+              } rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500`}
+            />
+            {errors.password && (
+              <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+            )}
+          </div>
+
+          {errors.submit && (
+            <div className="rounded-md bg-red-50 p-4">
+              <p className="text-sm text-red-600">{errors.submit}</p>
             </div>
+          )}
 
-            {/* Form */}
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              {/* Email Field */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Email address
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors ${
-                      errors.email ? "border-red-500" : "border-gray-300"
-                    }`}
-                    placeholder="Enter your email"
-                  />
-                </div>
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                )}
-              </div>
+          <div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {isLoading ? "Signing in..." : "Sign in"}
+            </button>
+          </div>
+        </form>
 
-              {/* Password Field */}
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Password
-                </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    id="password"
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    value={formData.password}
-                    onChange={handleChange}
-                    className={`w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors ${
-                      errors.password ? "border-red-500" : "border-gray-300"
-                    }`}
-                    placeholder="Enter your password"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-5 w-5" />
-                    ) : (
-                      <Eye className="h-5 w-5" />
-                    )}
-                  </button>
-                </div>
-                {errors.password && (
-                  <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-                )}
-              </div>
-
-              {/* General Error Message */}
-              {errors.submit && (
-                <p className="text-sm text-red-600 text-center">
-                  {errors.submit}
-                </p>
-              )}
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                {isLoading ? (
-                  <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Signing in...
-                  </div>
-                ) : (
-                  "Sign in"
-                )}
-              </button>
-            </form>
+        <div className="mt-6">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300" />
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">
+                Demo Credentials
+              </span>
+            </div>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-3 text-sm text-gray-600">
+            <p>Admin: sophia.martin@techwave.com / admin123</p>
+            <p>HR: liam.brown@techwave.com / hr123</p>
+            <p>Employee: emma.jones@techwave.com / emp1</p>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="text-center text-sm text-gray-500 py-4">
-        &copy; {new Date().getFullYear()} SHUBHCO Pvt. Ltd. All rights reserved.
-      </footer>
     </div>
   );
 }

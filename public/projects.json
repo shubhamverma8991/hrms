@@ -1,0 +1,143 @@
+{
+  "summary": {
+    "totalProjects": 4,
+    "currentProjects": 2,
+    "completedProjects": 2,
+    "teamSize": {
+      "PRJ001": 3,
+      "PRJ002": 2,
+      "PRJ003": 3,
+      "PRJ004": 2
+    }
+  },
+  "projects": [
+    {
+      "id": "PRJ001",
+      "title": "HRMS Development",
+      "description": "Development of Human Resource Management System with modern technologies and best practices",
+      "status": "In Progress",
+      "priority": "High",
+      "startDate": "2024-01-15",
+      "dueDate": "2024-06-30",
+      "team": [
+        "employee@hrms.com",
+        "john.doe@hrms.com",
+        "sarah.smith@hrms.com"
+      ],
+      "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      "tasks": [
+        {
+          "id": "TSK001",
+          "title": "Setup Project Structure",
+          "status": "Completed",
+          "assignedTo": "employee@hrms.com"
+        },
+        {
+          "id": "TSK002",
+          "title": "Implement Authentication",
+          "status": "In Progress",
+          "assignedTo": "john.doe@hrms.com"
+        },
+        {
+          "id": "TSK003",
+          "title": "Design Database Schema",
+          "status": "In Progress",
+          "assignedTo": "sarah.smith@hrms.com"
+        }
+      ]
+    },
+    {
+      "id": "PRJ002",
+      "title": "Employee Portal Redesign",
+      "description": "Redesigning the employee portal for better user experience and mobile responsiveness",
+      "status": "In Progress",
+      "priority": "Medium",
+      "startDate": "2024-02-01",
+      "dueDate": "2024-04-30",
+      "team": ["employee@hrms.com", "mike.wilson@hrms.com"],
+      "technologies": ["React", "Tailwind CSS", "Figma"],
+      "tasks": [
+        {
+          "id": "TSK001",
+          "title": "Create UI Mockups",
+          "status": "Completed",
+          "assignedTo": "employee@hrms.com"
+        },
+        {
+          "id": "TSK002",
+          "title": "Implement Responsive Design",
+          "status": "In Progress",
+          "assignedTo": "mike.wilson@hrms.com"
+        }
+      ]
+    },
+    {
+      "id": "PRJ003",
+      "title": "Attendance System Integration",
+      "description": "Integration of biometric attendance system with HRMS",
+      "status": "Completed",
+      "priority": "High",
+      "startDate": "2023-11-01",
+      "endDate": "2024-01-10",
+      "dueDate": "2024-01-15",
+      "team": [
+        "employee@hrms.com",
+        "david.brown@hrms.com",
+        "lisa.chen@hrms.com"
+      ],
+      "technologies": ["Python", "REST API", "MongoDB"],
+      "tasks": [
+        {
+          "id": "TSK001",
+          "title": "Setup Biometric Device Integration",
+          "status": "Completed",
+          "assignedTo": "david.brown@hrms.com"
+        },
+        {
+          "id": "TSK002",
+          "title": "Implement API Endpoints",
+          "status": "Completed",
+          "assignedTo": "employee@hrms.com"
+        },
+        {
+          "id": "TSK003",
+          "title": "Data Synchronization",
+          "status": "Completed",
+          "assignedTo": "lisa.chen@hrms.com"
+        }
+      ]
+    },
+    {
+      "id": "PRJ004",
+      "title": "Leave Management Module",
+      "description": "Development of comprehensive leave management system",
+      "status": "Completed",
+      "priority": "Medium",
+      "startDate": "2023-09-15",
+      "endDate": "2023-12-20",
+      "dueDate": "2023-12-31",
+      "team": ["employee@hrms.com", "anna.jones@hrms.com"],
+      "technologies": ["React", "Node.js", "PostgreSQL"],
+      "tasks": [
+        {
+          "id": "TSK001",
+          "title": "Design Leave Request Flow",
+          "status": "Completed",
+          "assignedTo": "employee@hrms.com"
+        },
+        {
+          "id": "TSK002",
+          "title": "Implement Leave Calculations",
+          "status": "Completed",
+          "assignedTo": "anna.jones@hrms.com"
+        },
+        {
+          "id": "TSK003",
+          "title": "Add Email Notifications",
+          "status": "Completed",
+          "assignedTo": "employee@hrms.com"
+        }
+      ]
+    }
+  ]
+}
