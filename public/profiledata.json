@@ -8,20 +8,27 @@
       "Employee ID": "ADM001",
       "Joined Date": "2022-01-15",
       "Contact": "+1 (555) 123-4567",
-      "Location": "New York Office"
+      "Location": "New York Office",
+      "Status": "Active"
     },
     "statistics": {
-      "Projects Managed": 8,
-      "Team Size": 15,
-      "System Uptime": "99.9%",
-      "Critical Issues Resolved": 24
+      "Total Employees": 8,
+      "Active Employees": 7,
+      "Total Projects": 4,
+      "Current Projects": 2,
+      "Total Tasks": 8,
+      "Completed Tasks": 1,
+      "High Priority Tasks": 4,
+      "Departments": 7
     },
     "skills": [
       "System Administration",
       "Network Security",
       "Team Management",
       "Project Planning",
-      "Risk Assessment"
+      "Risk Assessment",
+      "Employee Management",
+      "Resource Allocation"
     ],
     "certifications": [
       {
@@ -34,6 +41,20 @@
         "issueDate": "2020-03",
         "validUntil": "2023-03"
       }
+    ],
+    "recentActivities": [
+      {
+        "type": "Project",
+        "name": "HRMS Development",
+        "status": "In Progress",
+        "date": "2024-01-15"
+      },
+      {
+        "type": "Task",
+        "name": "System Security Audit",
+        "status": "Completed",
+        "date": "2024-03-25"
+      }
     ]
   },
   "hr": {
@@ -45,12 +66,17 @@
       "Employee ID": "HR001",
       "Joined Date": "2022-03-01",
       "Contact": "+1 (555) 234-5678",
-      "Location": "Boston Office"
+      "Location": "Boston Office",
+      "Status": "Active"
     },
     "statistics": {
-      "Employees Managed": 50,
-      "Hiring Success Rate": "92%",
+      "Employees Managed": 8,
+      "Active Employees": 7,
+      "Leave Requests": 4,
+      "Pending Approvals": 4,
+      "Approved This Month": 10,
       "Training Programs": 12,
+      "Onboarding Tasks": 2,
       "Policy Updates": 8
     },
     "skills": [
@@ -58,7 +84,9 @@
       "Employee Relations",
       "Training & Development",
       "Performance Management",
-      "HR Policy Development"
+      "HR Policy Development",
+      "Leave Management",
+      "Employee Engagement"
     ],
     "certifications": [
       {
@@ -71,6 +99,20 @@
         "issueDate": "2022-01",
         "validUntil": "2025-01"
       }
+    ],
+    "recentActivities": [
+      {
+        "type": "Task",
+        "name": "Employee Training Program",
+        "status": "In Progress",
+        "date": "2024-02-15"
+      },
+      {
+        "type": "Leave",
+        "name": "Leave Request Processing",
+        "status": "Completed",
+        "date": "2024-03-20"
+      }
     ]
   },
   "employee": {
@@ -82,15 +124,31 @@
       "Employee ID": "EMP004",
       "Joined Date": "2023-01-10",
       "Contact": "+1 (555) 345-6789",
-      "Location": "San Francisco Office"
+      "Location": "San Francisco Office",
+      "Status": "Active"
     },
     "statistics": {
-      "Projects Completed": 15,
-      "Code Reviews": 45,
-      "Bug Fixes": 78,
-      "Team Collaborations": 6
+      "Assigned Tasks": 3,
+      "Completed Tasks": 1,
+      "Current Projects": 2,
+      "Team Collaborations": 6,
+      "Available Leave": {
+        "Annual": 15,
+        "Sick": 10,
+        "Casual": 5
+      },
+      "Leave Requests": 2,
+      "Approved Leaves": 8
     },
-    "skills": ["React.js", "Node.js", "MongoDB", "AWS", "TypeScript"],
+    "skills": [
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "AWS",
+      "TypeScript",
+      "Project Management",
+      "Team Collaboration"
+    ],
     "certifications": [
       {
         "name": "AWS Certified Developer",
@@ -101,6 +159,20 @@
         "name": "MongoDB Certified Developer",
         "issueDate": "2023-02",
         "validUntil": "2026-02"
+      }
+    ],
+    "recentActivities": [
+      {
+        "type": "Task",
+        "name": "HRMS Dashboard Redesign",
+        "status": "In Progress",
+        "date": "2024-03-01"
+      },
+      {
+        "type": "Task",
+        "name": "Employee Portal Development",
+        "status": "In Progress",
+        "date": "2024-03-10"
       }
     ]
   }
