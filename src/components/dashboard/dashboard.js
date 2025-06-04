@@ -6,41 +6,39 @@ import InfoCard from "../common/InfoCard";
 import LeaveRequest from "../common/LeaveRequest";
 import OnboardItem from "../common/OnboardItem";
 import LeaveItem from "../common/LeaveItem";
-import ProfileRow from "../common/ProfileRow";
+import ProfileSection from "../common/ProfileSection";
 import RecentActivity from "../common/RecentActivity";
 import { BarChart3, Users, FileText, ClipboardList } from "lucide-react";
 
 const DashboardContent = ({ role }) => {
-  const email = localStorage.getItem("email");
   const [data, setData] = useState({
     metrics: {},
     leaveRequests: [],
     onboardItems: [],
     recentActivities: [],
     leaveItems: [],
-    profileInfo: {},
+    profileData: null,
   });
-
-  const getDashboardTitle = (role) => {
-    if (role === "admin") return "Admin";
-    if (role === "hr") return "HR Manager";
-    return "Employee";
-  };
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((jsonData) => {
-        setData(jsonData);
+    Promise.all([fetch("/data.json"), fetch("/profiledata.json")])
+      .then(([dataRes, profileRes]) =>
+        Promise.all([dataRes.json(), profileRes.json()])
+      )
+      .then(([jsonData, profileData]) => {
+        setData({
+          ...jsonData,
+          profileData: profileData[role],
+        });
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error loading dashboard data:", error);
         setLoading(false);
       });
-  }, []);
+  }, [role]);
 
   if (loading) {
     return <div className="text-center text-gray-600">Loading...</div>;
@@ -50,11 +48,12 @@ const DashboardContent = ({ role }) => {
     <div className="max-w-7xl mx-auto p-6">
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
         <h1 className="text-2xl font-bold mb-4">
-          {getDashboardTitle(role)} Dashboard
+          {role === "admin"
+            ? "Welcome, Admin!"
+            : role === "hr"
+            ? "Welcome, HR!"
+            : "Welcome, Employee!"}
         </h1>
-        <p className="text-gray-600 mb-6">
-          Logged in as: {email} ({role})
-        </p>
 
         {/* Metrics Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -120,23 +119,14 @@ const DashboardContent = ({ role }) => {
                 <LeaveItem key={index} {...item} />
               ))}
             </div>
-
-            {/* Profile */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-xl font-semibold mb-4">My Profile</h2>
-              {Object.entries(data.profileInfo || {}).map(([label, value]) => (
-                <ProfileRow
-                  key={label}
-                  label={label.charAt(0).toUpperCase() + label.slice(1)}
-                  value={value}
-                />
-              ))}
-              <button className="mt-6 w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                Update Profile
-              </button>
-            </div>
           </div>
         )}
+
+        {/* Profile Section for all roles */}
+        <div className="mt-10">
+          <h2 className="text-xl font-semibold mb-4">My Profile</h2>
+          <ProfileSection profileData={data.profileData} />
+        </div>
 
         {/* Quick Actions */}
         <div className="mt-10">

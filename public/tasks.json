@@ -1,46 +1,98 @@
 {
   "summary": {
-    "totalTasks": 4,
+    "totalTasks": 8,
     "completedTasks": 1,
-    "pendingTasks": 3,
-    "highPriority": 1
+    "pendingTasks": 7,
+    "highPriority": 4
   },
   "tasks": [
     {
       "id": "TSK001",
-      "title": "Update Employee Handbook",
-      "description": "Review and update the employee handbook with new policies",
-      "assignedTo": "John Doe",
+      "name": "HRMS Dashboard Redesign",
+      "description": "Redesign the dashboard interface for better user experience",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-31",
+      "status": "In Progress",
       "priority": "High",
-      "status": "Pending",
-      "dueDate": "2024-04-15"
+      "assignedTo": "emma.jones@techwave.com",
+      "collaborators": ["noah.taylor@techwave.com", "mia.walker@techwave.com"]
     },
     {
       "id": "TSK002",
-      "title": "Conduct Performance Reviews",
-      "description": "Complete Q1 performance reviews for the development team",
-      "assignedTo": "Jane Smith",
-      "priority": "Medium",
-      "status": "Pending",
-      "dueDate": "2024-04-20"
+      "name": "Employee Portal Development",
+      "description": "Develop a self-service portal for employees",
+      "startDate": "2024-03-10",
+      "endDate": "2024-04-15",
+      "status": "In Progress",
+      "priority": "High",
+      "assignedTo": "emma.jones@techwave.com",
+      "collaborators": ["mia.walker@techwave.com"]
     },
     {
       "id": "TSK003",
-      "title": "Plan Team Building Event",
-      "description": "Organize and schedule Q2 team building activity",
-      "assignedTo": "Mike Johnson",
-      "priority": "Low",
-      "status": "Completed",
-      "dueDate": "2024-04-10"
+      "name": "Q1 Marketing Campaign",
+      "description": "Plan and execute Q1 marketing campaign",
+      "startDate": "2024-02-01",
+      "endDate": "2024-03-31",
+      "status": "In Progress",
+      "priority": "High",
+      "assignedTo": "noah.taylor@techwave.com",
+      "collaborators": ["william.hall@techwave.com"]
     },
     {
       "id": "TSK004",
-      "title": "Update Job Descriptions",
-      "description": "Review and update job descriptions for all positions",
-      "assignedTo": "Sarah Wilson",
+      "name": "Financial Report Analysis",
+      "description": "Analyze Q1 financial reports and prepare summary",
+      "startDate": "2024-03-15",
+      "endDate": "2024-03-30",
+      "status": "In Progress",
       "priority": "Medium",
-      "status": "Pending",
-      "dueDate": "2024-04-25"
+      "assignedTo": "ava.thomas@techwave.com",
+      "collaborators": []
+    },
+    {
+      "id": "TSK005",
+      "name": "Sales Target Planning",
+      "description": "Develop sales targets for Q2",
+      "startDate": "2024-03-20",
+      "endDate": "2024-04-05",
+      "status": "In Progress",
+      "priority": "Medium",
+      "assignedTo": "william.hall@techwave.com",
+      "collaborators": ["noah.taylor@techwave.com"]
+    },
+    {
+      "id": "TSK006",
+      "name": "System Security Audit",
+      "description": "Conduct quarterly security audit of all systems",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-25",
+      "status": "Completed",
+      "priority": "High",
+      "assignedTo": "mia.walker@techwave.com",
+      "collaborators": ["emma.jones@techwave.com"]
+    },
+    {
+      "id": "TSK007",
+      "name": "Employee Training Program",
+      "description": "Develop new employee onboarding training materials",
+      "startDate": "2024-02-15",
+      "endDate": "2024-03-31",
+      "status": "In Progress",
+      "priority": "Medium",
+      "assignedTo": "liam.brown@techwave.com",
+      "collaborators": ["olivia.davis@techwave.com"]
+    },
+    {
+      "id": "TSK008",
+      "name": "Infrastructure Upgrade",
+      "description": "Upgrade server infrastructure and optimize performance",
+      "startDate": "2024-03-10",
+      "endDate": "2024-04-10",
+      "status": "In Progress",
+      "priority": "High",
+      "assignedTo": "mia.walker@techwave.com",
+      "collaborators": ["emma.jones@techwave.com"]
     }
   ]
 }

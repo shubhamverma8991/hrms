@@ -1,163 +1,98 @@
-[
-  {
-    "id": 1,
-    "email": "sophia.martin@techwave.com",
-    "name": "Sophia Martin",
-    "password": "admin123",
-    "role": "admin"
-  },
-  {
-    "id": 2,
-    "email": "liam.brown@techwave.com",
-    "name": "Liam Brown",
-    "password": "hr123",
-    "role": "hr"
-  },
-  {
-    "id": 3,
-    "email": "olivia.davis@techwave.com",
-    "name": "Olivia Davis",
-    "password": "hr123",
-    "role": "hr"
-  },
-  {
-    "id": 4,
-    "email": "emma.jones@techwave.com",
-    "name": "Emma Jones",
-    "password": "emp1",
-    "role": "employee"
-  },
-  {
-    "id": 5,
-    "email": "noah.taylor@techwave.com",
-    "name": "Noah Taylor",
-    "password": "emp2",
-    "role": "employee"
-  },
-  {
-    "id": 6,
-    "email": "ava.thomas@techwave.com",
-    "name": "Ava Thomas",
-    "password": "emp3",
-    "role": "employee"
-  },
-  {
-    "id": 7,
-    "email": "william.hall@techwave.com",
-    "name": "William Hall",
-    "password": "emp4",
-    "role": "employee"
-  },
-  {
-    "id": 8,
-    "email": "mia.walker@techwave.com",
-    "name": "Mia Walker",
-    "password": "emp5",
-    "role": "employee"
-  },
-  {
-    "id": 9,
-    "email": "james.young@techwave.com",
-    "name": "James Young",
-    "password": "emp6",
-    "role": "employee"
-  },
-  {
-    "id": 10,
-    "email": "isabella.king@techwave.com",
-    "name": "Isabella King",
-    "password": "emp7",
-    "role": "employee"
-  },
-  {
-    "id": 11,
-    "email": "benjamin.scott@techwave.com",
-    "name": "Benjamin Scott",
-    "password": "emp8",
-    "role": "employee"
-  },
-  {
-    "id": 12,
-    "email": "charlotte.green@techwave.com",
-    "name": "Charlotte Green",
-    "password": "emp9",
-    "role": "employee"
-  },
-  {
-    "id": 13,
-    "email": "lucas.adams@techwave.com",
-    "name": "Lucas Adams",
-    "password": "emp10",
-    "role": "employee"
-  },
-  {
-    "id": 14,
-    "email": "amelia.baker@techwave.com",
-    "name": "Amelia Baker",
-    "password": "emp11",
-    "role": "employee"
-  },
-  {
-    "id": 15,
-    "email": "henry.gonzalez@techwave.com",
-    "name": "Henry Gonzalez",
-    "password": "emp12",
-    "role": "employee"
-  },
-  {
-    "id": 16,
-    "email": "evelyn.nelson@techwave.com",
-    "name": "Evelyn Nelson",
-    "password": "emp13",
-    "role": "employee"
-  },
-  {
-    "id": 17,
-    "email": "alexander.carter@techwave.com",
-    "name": "Alexander Carter",
-    "password": "emp14",
-    "role": "employee"
-  },
-  {
-    "id": 18,
-    "email": "harper.mitchell@techwave.com",
-    "name": "Harper Mitchell",
-    "password": "emp15",
-    "role": "employee"
-  },
-  {
-    "id": 19,
-    "email": "jackson.perez@techwave.com",
-    "name": "Jackson Perez",
-    "password": "emp16",
-    "role": "employee"
-  },
-  {
-    "id": 20,
-    "email": "ella.roberts@techwave.com",
-    "name": "Ella Roberts",
-    "password": "emp17",
-    "role": "employee"
-  },
-  {
-    "id": 21,
-    "email": "sebastian.turner@techwave.com",
-    "name": "Sebastian Turner",
-    "password": "emp18",
-    "role": "employee"
-  },
-  {
-    "id": 22,
-    "email": "scarlett.phillips@techwave.com",
-    "name": "Scarlett Phillips",
-    "password": "emp19",
-    "role": "employee"
-  },
-  {
-    "id": 23,
-    "email": "logan.campbell@techwave.com",
-    "name": "Logan Campbell",
-    "password": "emp20",
-    "role": "employee"
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "sophia.martin@techwave.com",
+      "name": "Sophia Martin",
+      "password": "admin123",
+      "role": "admin",
+      "department": "Administration",
+      "position": "System Administrator",
+      "status": "Active",
+      "joined": "2022-01-15"
+    },
+    {
+      "id": 2,
+      "email": "liam.brown@techwave.com",
+      "name": "Liam Brown",
+      "password": "hr123",
+      "role": "hr",
+      "department": "Human Resources",
+      "position": "HR Manager",
+      "status": "Active",
+      "joined": "2022-03-01"
+    },
+    {
+      "id": 3,
+      "email": "olivia.davis@techwave.com",
+      "name": "Olivia Davis",
+      "password": "hr123",
+      "role": "hr",
+      "department": "Human Resources",
+      "position": "HR Executive",
+      "status": "Active",
+      "joined": "2022-06-15"
+    },
+    {
+      "id": 4,
+      "email": "emma.jones@techwave.com",
+      "name": "Emma Jones",
+      "password": "emp1",
+      "role": "employee",
+      "department": "Engineering",
+      "position": "Senior Developer",
+      "status": "Active",
+      "joined": "2023-01-10"
+    },
+    {
+      "id": 5,
+      "email": "noah.taylor@techwave.com",
+      "name": "Noah Taylor",
+      "password": "emp2",
+      "role": "employee",
+      "department": "Marketing",
+      "position": "Marketing Specialist",
+      "status": "Active",
+      "joined": "2023-02-20"
+    },
+    {
+      "id": 6,
+      "email": "ava.thomas@techwave.com",
+      "name": "Ava Thomas",
+      "password": "emp3",
+      "role": "employee",
+      "department": "Finance",
+      "position": "Financial Analyst",
+      "status": "Inactive",
+      "joined": "2023-03-15"
+    },
+    {
+      "id": 7,
+      "email": "william.hall@techwave.com",
+      "name": "William Hall",
+      "password": "emp4",
+      "role": "employee",
+      "department": "Sales",
+      "position": "Sales Manager",
+      "status": "Active",
+      "joined": "2023-04-01"
+    },
+    {
+      "id": 8,
+      "email": "mia.walker@techwave.com",
+      "name": "Mia Walker",
+      "password": "emp5",
+      "role": "employee",
+      "department": "IT",
+      "position": "System Analyst",
+      "status": "Active",
+      "joined": "2023-05-15"
+    }
+  ],
+  "summary": {
+    "totalEmployees": 8,
+    "activeEmployees": 7,
+    "inactiveEmployees": 1,
+    "departments": 7
   }
-]
+}
