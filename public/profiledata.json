@@ -1,0 +1,107 @@
+{
+  "admin": {
+    "personalInfo": {
+      "Name": "Sophia Martin",
+      "Email": "sophia.martin@techwave.com",
+      "Role": "System Administrator",
+      "Department": "Administration",
+      "Employee ID": "ADM001",
+      "Joined Date": "2022-01-15",
+      "Contact": "+1 (555) 123-4567",
+      "Location": "New York Office"
+    },
+    "statistics": {
+      "Projects Managed": 8,
+      "Team Size": 15,
+      "System Uptime": "99.9%",
+      "Critical Issues Resolved": 24
+    },
+    "skills": [
+      "System Administration",
+      "Network Security",
+      "Team Management",
+      "Project Planning",
+      "Risk Assessment"
+    ],
+    "certifications": [
+      {
+        "name": "Certified Information Systems Security Professional (CISSP)",
+        "issueDate": "2021-06",
+        "validUntil": "2024-06"
+      },
+      {
+        "name": "Project Management Professional (PMP)",
+        "issueDate": "2020-03",
+        "validUntil": "2023-03"
+      }
+    ]
+  },
+  "hr": {
+    "personalInfo": {
+      "Name": "Liam Brown",
+      "Email": "liam.brown@techwave.com",
+      "Role": "HR Manager",
+      "Department": "Human Resources",
+      "Employee ID": "HR001",
+      "Joined Date": "2022-03-01",
+      "Contact": "+1 (555) 234-5678",
+      "Location": "Boston Office"
+    },
+    "statistics": {
+      "Employees Managed": 50,
+      "Hiring Success Rate": "92%",
+      "Training Programs": 12,
+      "Policy Updates": 8
+    },
+    "skills": [
+      "Recruitment",
+      "Employee Relations",
+      "Training & Development",
+      "Performance Management",
+      "HR Policy Development"
+    ],
+    "certifications": [
+      {
+        "name": "Professional in Human Resources (PHR)",
+        "issueDate": "2021-09",
+        "validUntil": "2024-09"
+      },
+      {
+        "name": "SHRM Certified Professional",
+        "issueDate": "2022-01",
+        "validUntil": "2025-01"
+      }
+    ]
+  },
+  "employee": {
+    "personalInfo": {
+      "Name": "Emma Jones",
+      "Email": "emma.jones@techwave.com",
+      "Role": "Senior Developer",
+      "Department": "Engineering",
+      "Employee ID": "EMP004",
+      "Joined Date": "2023-01-10",
+      "Contact": "+1 (555) 345-6789",
+      "Location": "San Francisco Office"
+    },
+    "statistics": {
+      "Projects Completed": 15,
+      "Code Reviews": 45,
+      "Bug Fixes": 78,
+      "Team Collaborations": 6
+    },
+    "skills": ["React.js", "Node.js", "MongoDB", "AWS", "TypeScript"],
+    "certifications": [
+      {
+        "name": "AWS Certified Developer",
+        "issueDate": "2022-11",
+        "validUntil": "2025-11"
+      },
+      {
+        "name": "MongoDB Certified Developer",
+        "issueDate": "2023-02",
+        "validUntil": "2026-02"
+      }
+    ]
+  }
+}

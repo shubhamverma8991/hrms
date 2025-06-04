@@ -12,7 +12,7 @@ import Login from "./components/login/login";
 import Dashboard from "./components/dashboard/dashboard";
 import Leave from "./components/leave/leave";
 import Employee from "./components/employee/employee";
-import Task from "./components/task/task";
+import TaskContent from "./components/task/task";
 import Report from "./components/report/report";
 import Attendance from "./components/Attendance/Attendancee";
 
@@ -34,7 +34,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/leave" element={<Leave />} />
               <Route path="/employee" element={<Employee />} />
-              <Route path="/task" element={<Task />} />
+              <Route path="/task" element={<TaskContent />} />
               <Route path="/reports" element={<Report />} />
               <Route path="/attendance" element={<Attendance role={role} />} />
             </>
