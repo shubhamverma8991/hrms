@@ -52,8 +52,30 @@ export default function NavBar({ role }) {
   const handleLogout = () => {
     localStorage.removeItem("role");
     localStorage.removeItem("email");
+    localStorage.removeItem("name"); // Ensure name is cleared on logout
     navigate("/login");
   };
+
+  const getInitialAndDisplayText = (role) => {
+    const name = localStorage.getItem("name"); // Get name from localStorage
+    switch (role) {
+      case "admin":
+        return { initial: "A", displayText: "Admin" };
+      case "hr":
+        return { initial: "HR", displayText: "HR Manager" };
+      case "employee":
+        // Extract first name from stored name, or fallback to "Employee"
+        const firstName = name ? name.split(" ")[0] : "Employee";
+        return {
+          initial: firstName.charAt(0).toUpperCase(),
+          displayText: firstName,
+        };
+      default:
+        return { initial: "U", displayText: "User" };
+    }
+  };
+
+  const { initial, displayText } = getInitialAndDisplayText(role);
 
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-r from-blue-900/80 via-blue-800/80 to-blue-900/80 backdrop-blur-lg shadow-2xl border-b border-[#4B5EAA]">

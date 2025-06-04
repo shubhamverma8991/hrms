@@ -42,12 +42,37 @@ const Layout = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isProfileOpen, setIsProfileOpen] = React.useState(false);
   const role = localStorage.getItem("role");
-  const username = localStorage.getItem("username") || "User";
+
+  const getInitialAndDisplayText = (role) => {
+    switch (role) {
+      case "admin":
+        return { initial: "A", displayText: "Admin" };
+      case "hr":
+        return { initial: "HR", displayText: "HR Manager" };
+      case "employee":
+        return { initial: "E", displayText: "Employee" };
+      default:
+        return { initial: "U", displayText: "User" };
+    }
+  };
+
+  const { initial, displayText } = getInitialAndDisplayText(role);
 
   const handleLogout = () => {
     localStorage.removeItem("role");
     localStorage.removeItem("username");
     navigate("/login");
+  };
+
+  const handleViewProfile = () => {
+    setIsProfileOpen(false);
+    // Navigate to dashboard and scroll to profile section
+    navigate("/dashboard");
+    setTimeout(() => {
+      document
+        .getElementById("profile-section")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const currentMenuItems = menuItems[role] || [];
@@ -100,19 +125,26 @@ const Layout = ({ children }) => {
                     className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 focus:outline-none"
                   >
                     <span className="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center">
-                      {username.charAt(0).toUpperCase()}
+                      {initial}
                     </span>
-                    <span>{username}</span>
-                    {ChevronDown && <ChevronDown className="w-4 h-4" />}
+                    <span>{displayText}</span>
+                    <ChevronDown className="w-4 h-4" />
                   </button>
                   {isProfileOpen && (
                     <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                       <div className="py-1">
                         <button
+                          onClick={handleViewProfile}
+                          className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <Users className="w-4 h-4 mr-2" />
+                          My Profile
+                        </button>
+                        <button
                           onClick={handleLogout}
                           className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
-                          {LogOut && <LogOut className="w-4 h-4 mr-2" />}
+                          <LogOut className="w-4 h-4 mr-2" />
                           Sign out
                         </button>
                       </div>
@@ -125,11 +157,13 @@ const Layout = ({ children }) => {
               <div className="flex items-center sm:hidden">
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
                 >
-                  {isMobileMenuOpen
-                    ? X && <X className="block h-6 w-6" />
-                    : Menu && <Menu className="block h-6 w-6" />}
+                  {isMobileMenuOpen ? (
+                    <X className="block h-6 w-6" />
+                  ) : (
+                    <Menu className="block h-6 w-6" />
+                  )}
                 </button>
               </div>
             </div>
@@ -149,32 +183,59 @@ const Layout = ({ children }) => {
                     navigate(path);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`flex items-center px-4 py-2 text-base font-medium ${
+                  className={`flex items-center px-3 py-2 text-base font-medium ${
                     currentPath === path
-                      ? "bg-blue-50 border-blue-900 text-blue-900"
-                      : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700"
+                      ? "text-blue-900 bg-blue-50"
+                      : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  {Icon && <Icon className="w-5 h-5 mr-3" />}
+                  <Icon className="w-5 h-5 mr-2" />
                   {label}
                 </a>
               ))}
-              <button
-                onClick={handleLogout}
-                className="flex items-center w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-              >
-                <LogOut className="w-5 h-5 mr-3" />
-                Sign out
-              </button>
+            </div>
+            <div className="pt-4 pb-3 border-t border-gray-200">
+              <div className="flex items-center px-4">
+                <div className="flex-shrink-0">
+                  <span className="h-8 w-8 rounded-full bg-blue-900 text-white flex items-center justify-center">
+                    {initial}
+                  </span>
+                </div>
+                <div className="ml-3">
+                  <div className="text-base font-medium text-gray-800">
+                    {displayText}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-3 space-y-1">
+                <button
+                  onClick={() => {
+                    handleViewProfile();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex items-center w-full px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  My Profile
+                </button>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex items-center w-full px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                >
+                  <LogOut className="w-5 h-5 mr-2" />
+                  Sign out
+                </button>
+              </div>
             </div>
           </div>
         )}
       </nav>
 
       {/* Main Content */}
-      <main className="pt-20 pb-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
-      </main>
+      <div className="pt-16">{children}</div>
     </div>
   );
 };

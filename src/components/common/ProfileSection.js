@@ -11,12 +11,30 @@ import {
   Building2,
   BarChart2,
   Book,
+  Activity,
 } from "lucide-react";
 
 const ProfileSection = ({ profileData }) => {
   if (!profileData) return null;
 
-  const { personalInfo, statistics, skills, certifications } = profileData;
+  const { personalInfo, statistics, skills, certifications, recentActivities } =
+    profileData;
+
+  const renderStatValue = (value) => {
+    if (typeof value === "object" && value !== null) {
+      return (
+        <div className="space-y-1">
+          {Object.entries(value).map(([subKey, subValue]) => (
+            <div key={subKey} className="text-sm">
+              <span className="text-gray-500">{subKey}:</span>{" "}
+              <span className="font-medium">{subValue}</span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+    return <p className="text-xl font-semibold text-gray-800">{value}</p>;
+  };
 
   const renderPersonalInfo = () => (
     <div className="bg-white rounded-xl shadow-md p-6 mb-6">
@@ -93,8 +111,8 @@ const ProfileSection = ({ profileData }) => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {Object.entries(statistics).map(([key, value]) => (
           <div key={key} className="bg-gray-50 rounded-lg p-4">
-            <p className="text-sm text-gray-500">{key}</p>
-            <p className="text-xl font-semibold text-gray-800">{value}</p>
+            <p className="text-sm text-gray-500 mb-2">{key}</p>
+            {renderStatValue(value)}
           </div>
         ))}
       </div>
@@ -121,7 +139,7 @@ const ProfileSection = ({ profileData }) => {
   );
 
   const renderCertifications = () => (
-    <div className="bg-white rounded-xl shadow-md p-6">
+    <div className="bg-white rounded-xl shadow-md p-6 mb-6">
       <h3 className="text-lg font-semibold mb-4 text-gray-800">
         <Award className="w-5 h-5 inline-block mr-2 text-blue-600" />
         Certifications
@@ -142,12 +160,46 @@ const ProfileSection = ({ profileData }) => {
     </div>
   );
 
+  const renderRecentActivities = () => (
+    <div className="bg-white rounded-xl shadow-md p-6">
+      <h3 className="text-lg font-semibold mb-4 text-gray-800">
+        <Activity className="w-5 h-5 inline-block mr-2 text-blue-600" />
+        Recent Activities
+      </h3>
+      <div className="space-y-4">
+        {recentActivities.map((activity, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-between border-b border-gray-100 last:border-0 pb-4 last:pb-0"
+          >
+            <div>
+              <p className="font-medium text-gray-800">{activity.name}</p>
+              <p className="text-sm text-gray-500">
+                {activity.type} • {activity.date}
+              </p>
+            </div>
+            <span
+              className={`px-2 py-1 text-xs font-medium rounded-full ${
+                activity.status === "Completed"
+                  ? "bg-green-100 text-green-800"
+                  : "bg-yellow-100 text-yellow-800"
+              }`}
+            >
+              {activity.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div>
       {renderPersonalInfo()}
       {renderStatistics()}
       {renderSkills()}
       {renderCertifications()}
+      {renderRecentActivities()}
     </div>
   );
 };
